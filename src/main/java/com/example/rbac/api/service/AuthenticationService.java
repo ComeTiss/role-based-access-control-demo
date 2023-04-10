@@ -2,7 +2,10 @@ package com.example.rbac.api.service;
 
 import com.example.rbac.api.dto.AuthenticationRequest;
 import com.example.rbac.api.dto.LoginResponse;
+import com.example.rbac.api.entity.Role;
+import com.example.rbac.api.entity.RoleEnum;
 import com.example.rbac.api.entity.User;
+import com.example.rbac.api.repository.RoleRepository;
 import com.example.rbac.api.repository.UserRepository;
 import com.example.rbac.exception.ExistingUserException;
 import com.example.rbac.exception.InvalidInputException;
@@ -13,6 +16,7 @@ import com.example.rbac.security.UserToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +24,9 @@ public class AuthenticationService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     public void signup(AuthenticationRequest signUpRequest) throws ServiceException {
         if (!signUpRequest.isValid()) {
@@ -30,7 +37,9 @@ public class AuthenticationService {
             throw new ExistingUserException("A user already exist for the email provided");
         }
 
-        userRepository.save(new User(signUpRequest.email(), signUpRequest.password()));
+        Role userRole = roleRepository.findByLabel(RoleEnum.USER.getLabel());
+        User user = new User(signUpRequest.email(), signUpRequest.password(), List.of(userRole));
+        userRepository.save(user);
     }
 
     public LoginResponse login(AuthenticationRequest loginRequest) throws ServiceException {

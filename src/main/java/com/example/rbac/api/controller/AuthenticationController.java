@@ -1,11 +1,11 @@
 package com.example.rbac.api.controller;
 
+import com.example.rbac.api.dto.AuthenticationRequest;
 import com.example.rbac.api.dto.ErrorResponse;
 import com.example.rbac.api.dto.LoginResponse;
-import com.example.rbac.api.dto.AuthenticationRequest;
-import com.example.rbac.exception.ServiceException;
-import com.example.rbac.exception.InvalidLoginException;
 import com.example.rbac.api.service.AuthenticationService;
+import com.example.rbac.exception.InvalidLoginException;
+import com.example.rbac.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

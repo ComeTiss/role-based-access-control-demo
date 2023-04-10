@@ -6,7 +6,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Getter;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 public class UserToken {

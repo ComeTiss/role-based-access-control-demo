@@ -2,6 +2,7 @@ package com.example.rbac.api.service;
 
 import com.example.rbac.api.controller.UserDto;
 import com.example.rbac.api.entity.User;
+import com.example.rbac.api.mapper.UserMapper;
 import com.example.rbac.api.repository.UserRepository;
 import com.example.rbac.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class UserService implements UserDetailsService {
     public List<UserDto> getAllUsers() {
         return userRepository.findAll()
                 .stream()
-                .map(user -> new UserDto(user.getId(), user.getEmail()))
+                .map(UserMapper::toDto)
                 .toList();
     }
 

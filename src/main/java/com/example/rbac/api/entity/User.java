@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Getter
 @Setter
@@ -15,7 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
@@ -23,8 +24,17 @@ public class User {
 
     private String password;
 
-    public User(String email, String rawPassword) {
+    public User(String email, String rawPassword, Collection<Role> roles) {
         this.email = email;
         this.password = new Password(rawPassword).getEncodedValue();
+        this.roles = roles;
     }
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    private Collection<Role> roles = new ArrayList<>();
 }

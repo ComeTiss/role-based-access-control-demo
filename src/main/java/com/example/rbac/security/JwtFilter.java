@@ -2,12 +2,11 @@ package com.example.rbac.security;
 
 import com.example.rbac.api.entity.User;
 import com.example.rbac.api.service.UserService;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -16,7 +15,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Optional;
 
 @Slf4j
@@ -53,7 +51,8 @@ public class JwtFilter extends OncePerRequestFilter {
             UserToken token = new UserToken(header.substring(7));
             Optional<User> userOpt = token.extractUser();
             if (userOpt.isPresent()) {
-                return new UsernamePasswordAuthenticationToken(userOpt.get(), null, new ArrayList<>());
+                UserDetails userDetails = userService.loadUserByUsername(userOpt.get().getEmail());
+                return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             }
         }
         return null;
