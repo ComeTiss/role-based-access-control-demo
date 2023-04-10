@@ -1,10 +1,12 @@
-package com.example.rbac.entity;
+package com.example.rbac.api.entity;
 
+import com.example.rbac.security.Password;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -21,8 +23,8 @@ public class User {
 
     private String password;
 
-    public User(String email, String password) {
+    public User(String email, String rawPassword) {
         this.email = email;
-        this.password = password;
+        this.password = new Password(rawPassword).getEncodedValue();
     }
 }

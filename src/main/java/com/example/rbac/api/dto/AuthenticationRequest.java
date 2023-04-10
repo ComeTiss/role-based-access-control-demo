@@ -1,6 +1,6 @@
-package com.example.rbac.dto;
+package com.example.rbac.api.dto;
 
-public record SignUpRequest(String email, String password) {
+public record AuthenticationRequest(String email, String password) {
 
     public boolean isValid() {
         return isEmailValid() && isPasswordValid();

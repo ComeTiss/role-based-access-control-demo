@@ -1,4 +1,4 @@
-package com.example.rbac.dto;
+package com.example.rbac.api.dto;
 
 public record ErrorResponse(String message) {
 
