@@ -1,4 +1,4 @@
-package com.example.rbac.security.annotations;
+package com.example.rbac.security.annotation;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 

@@ -1,6 +1,7 @@
 package com.example.rbac.security;
 
 import com.example.rbac.api.service.UserService;
+import com.example.rbac.security.filter.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

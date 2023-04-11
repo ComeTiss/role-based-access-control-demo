@@ -1,8 +1,5 @@
 package com.example.rbac.api.entity;
 
-import com.example.rbac.api.entity.Privilege;
-import com.example.rbac.api.entity.Role;
-import com.example.rbac.api.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

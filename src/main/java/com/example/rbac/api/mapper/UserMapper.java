@@ -14,17 +14,17 @@ public class UserMapper {
     private UserMapper() {}
 
     public static UserDto toDto(User user) {
-        return new UserDto(user.getId(), user.getEmail(), toRoleDtos(user.getRoles()));
+        return new UserDto(user.getId(), user.getEmail(), toRolesDto(user.getRoles()));
     }
 
-    private static List<RoleDto> toRoleDtos(Collection<Role> roles) {
+    private static List<RoleDto> toRolesDto(Collection<Role> roles) {
         return roles.stream().map(UserMapper::toRoleDto).toList();
     }
 
     private static RoleDto toRoleDto(Role role) {
-        return new RoleDto(role.getLabel(), toPrivilegeDtos(role.getPrivileges()));
+        return new RoleDto(role.getLabel(), toPrivilegesDto(role.getPrivileges()));
     }
-    private static List<PrivilegeDto> toPrivilegeDtos(Collection<Privilege> privileges) {
+    private static List<PrivilegeDto> toPrivilegesDto(Collection<Privilege> privileges) {
         return privileges.stream().map(UserMapper::toPrivilegeDto).toList();
     }
 

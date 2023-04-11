@@ -1,10 +1,10 @@
 package com.example.rbac.api.service;
 
 import com.example.rbac.api.dto.UserDto;
+import com.example.rbac.api.entity.MyUserDetails;
 import com.example.rbac.api.entity.User;
 import com.example.rbac.api.mapper.UserMapper;
 import com.example.rbac.api.repository.UserRepository;
-import com.example.rbac.api.entity.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

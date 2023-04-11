@@ -1,8 +1,8 @@
-package com.example.rbac.security;
+package com.example.rbac.security.filter;
 
 import com.example.rbac.api.entity.User;
 import com.example.rbac.api.service.UserService;
-import lombok.extern.slf4j.Slf4j;
+import com.example.rbac.security.UserToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@Slf4j
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
