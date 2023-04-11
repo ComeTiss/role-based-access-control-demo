@@ -1,6 +1,4 @@
-package com.example.rbac.api.controller;
-
-import com.example.rbac.dto.RoleDto;
+package com.example.rbac.api.dto;
 
 import java.util.List;
 

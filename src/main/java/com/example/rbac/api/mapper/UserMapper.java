@@ -1,11 +1,11 @@
 package com.example.rbac.api.mapper;
 
-import com.example.rbac.api.controller.UserDto;
+import com.example.rbac.api.dto.PrivilegeDto;
+import com.example.rbac.api.dto.RoleDto;
+import com.example.rbac.api.dto.UserDto;
 import com.example.rbac.api.entity.Privilege;
 import com.example.rbac.api.entity.Role;
 import com.example.rbac.api.entity.User;
-import com.example.rbac.dto.PrivilegeDto;
-import com.example.rbac.dto.RoleDto;
 
 import java.util.Collection;
 import java.util.List;

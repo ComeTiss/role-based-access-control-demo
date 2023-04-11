@@ -1,5 +1,6 @@
 package com.example.rbac.api.controller;
 
+import com.example.rbac.api.dto.UserDto;
 import com.example.rbac.api.service.UserService;
 import com.example.rbac.security.annotations.IsAdmin;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.example.rbac.security;
+package com.example.rbac.api.entity;
 
 import com.example.rbac.api.entity.Privilege;
 import com.example.rbac.api.entity.Role;
